@@ -4,6 +4,8 @@
 
 Ranks electrical and mechanical engineering schools by what their faculty publish in each field's top journals and conferences. You can filter by area, venue, region and years, and open any school to see its faculty and a breakdown by area.
 
+<img width="1315" height="851" alt="Screenshot 2026-11-05 204030" src="https://github.com/user-attachments/assets/7c12c39f-cdb3-421f-bc42-f44ce85ef703" />
+
 ## Using the site
 
 - Electrical / Mechanical: switches between the two disciplines.
