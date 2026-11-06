@@ -1,0 +1,10 @@
+# Raw downloads (rebuild with pipeline/fetch.py)
+pipeline/cache/
+
+__pycache__/
+*.pyc
+.env
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

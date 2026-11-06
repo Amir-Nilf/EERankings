@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EERankings: Electrical Engineering Rankings</title>
+<meta name="description" content="Electrical and mechanical engineering institutions ranked by what their faculty publish in each field's most selective journals and conferences. Created by Amir Nilforoushan.">
+<meta name="author" content="Amir Nilforoushan">
+<link rel="author" href="https://github.com/Amir-Nilf">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "EERankings",
+  "description": "Electrical and mechanical engineering institutions ranked by faculty publications at selective venues.",
+  "creator": {
+    "@type": "Person",
+    "name": "Amir Nilforoushan",
+    "sameAs": ["https://github.com/Amir-Nilf"]
+  }
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="css/style.css?v=28">
+</head>
+<body>
+<canvas id="clouds" aria-hidden="true"></canvas>
+<div class="container">
+
+  <!-- Title and discipline toggle -->
+  <header class="title-row">
+    <h1><span id="brand">EERankings</span>: <span id="disc-title">Electrical Engineering</span> Rankings</h1>
+    <div class="disc-toggle" role="group" aria-label="Discipline">
+      <button id="disc-ee" type="button" data-disc="ee" aria-pressed="true">Electrical</button>
+      <button id="disc-me" type="button" data-disc="me" aria-pressed="false">Mechanical</button>
+    </div>
+  </header>
+
+  <!-- Region, years and buttons -->
+  <section class="infobar paper" aria-label="Ranking controls">
+    <p id="blurb">Institutions ranked by what their faculty publish in the most selective <span id="disc-lower">electrical engineering</span> journals and conferences.</p>
+    <div class="controls">
+      <div class="region-wrap">
+        <img id="region-flag" class="flag" alt="" src="">
+        <select id="region" aria-label="Region"></select>
+      </div>
+      <div class="years">
+        <output id="fromyear-label">2020</output>
+        <div class="yearslider">
+          <div class="track"><div class="track-fill" id="track-fill"></div></div>
+          <input type="range" id="fromyear" aria-label="First year">
+          <input type="range" id="toyear" aria-label="Last year">
+        </div>
+        <output id="toyear-label">2026</output>
+      </div>
+      <div class="control-links">
+        <button class="text-btn" id="mode-btn" type="button" aria-pressed="false" title="Switch to the grad school ranking. See the FAQ for how it works.">Advisor Index</button>
+        <button class="text-btn" id="faq-btn" type="button" aria-expanded="false" aria-controls="faq">FAQ</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="faq paper" hidden>
+    <dl>
+      <dt>What does this measure?</dt>
+      <dd>Research output. Each area has a short list of top venues, and schools are compared on what their faculty publish there. Surveys and reputation aren't used.</dd>
+      <dt>How is the count calculated?</dt>
+      <dd>
+        Each author on a paper gets the same share of credit. A school's total in an area is the sum of its faculty's credit there.
+        <div class="eq"><math displaystyle="true" aria-label="credit equals 1 divided by the number of authors"><mtext>credit</mtext><mo>=</mo><mfrac><mn>1</mn><mtext>number of authors</mtext></mfrac></math></div>
+        The count is the geometric mean of those totals across the <math><mi>N</mi></math> selected areas. This favors schools that are strong in several areas over schools with one very large area.
+        <div class="eq"><math displaystyle="true" aria-label="count equals the product over areas of total plus 1, raised to the power 1 over N, minus 1"><mtext>count</mtext><mo>=</mo><msup><mrow><mo>(</mo><munder><mo>&prod;</mo><mi>a</mi></munder><mrow><mo stretchy="false" lspace="0" rspace="0">(</mo><msub><mtext>total</mtext><mi>a</mi></msub><mo>+</mo><mn>1</mn><mo stretchy="false" lspace="0" rspace="0">)</mo></mrow><mo>)</mo></mrow><mrow><mn>1</mn><mo lspace="0" rspace="0">/</mo><mi>N</mi></mrow></msup><mo>&minus;</mo><mn>1</mn></math></div>
+      </dd>
+      <dt>Who counts as faculty?</dt>
+      <dd>There's no hand-checked faculty list for these fields, so faculty are inferred from <a href="https://openalex.org" target="_blank" rel="noopener">OpenAlex</a>. Someone counts if their latest paper in these venues lists a university and they were last or corresponding author on at least <span id="pi-min">3</span> papers in this discipline's venues. All of their papers count toward their current school, whatever department they're in. Some students and postdocs get through and some faculty get missed, so don't read too much into small differences.</dd>
+      <dt>Why these venues?</dt>
+      <dd>They're the flagship journals for each area, plus flagship conferences where those matter. Click an area's name to see its venues and turn them on or off individually.</dd>
+      <dt>Where do the method and data come from?</dt>
+      <dd>The scoring method follows <a href="https://csrankings.org" target="_blank" rel="noopener">CSRankings</a>, created by Emery Berger for computer science. This site is independent and isn't affiliated with or endorsed by that project. Publication data comes from <a href="https://openalex.org" target="_blank" rel="noopener">OpenAlex</a> (<a href="https://arxiv.org/abs/2205.01833" target="_blank" rel="noopener">Priem, Piwowar &amp; Orr, 2022</a>), released under CC0.</dd>
+      <dt>What is the Advisor Index?</dt>
+      <dd>
+        A second ranking for choosing a grad school. You'll work with one or two advisors, so what matters is how many active, well-cited people a school has in your area. Click Advisor Index next to FAQ to turn it on.
+        <ol>
+          <li>
+            <b>Influence.</b> Each paper has a value that depends on its citations and is split equally among its authors. The log keeps one very highly cited paper from dominating.
+            <div class="eq"><math displaystyle="true" aria-label="paper value equals 1 plus the natural log of 1 plus citations, divided by the number of authors"><mtext>paper value</mtext><mo>=</mo><mfrac><mrow><mn>1</mn><mo>+</mo><mi>ln</mi><mo stretchy="false" lspace="0" rspace="0">(</mo><mn>1</mn><mo>+</mo><mtext>citations</mtext><mo stretchy="false" lspace="0" rspace="0">)</mo></mrow><mtext>number of authors</mtext></mfrac></math></div>
+            A person's influence is their percentage of that venue's total for that year, which makes old and new papers and small and large fields comparable.
+          </li>
+          <li>
+            <b>Recency.</b> Influence is weighted so it halves every 3 years, counted back from the last selected year.
+            <div class="eq"><math displaystyle="true" aria-label="weight equals 2 to the power of negative age over 3"><mtext>weight</mtext><mo>=</mo><msup><mn>2</mn><mrow><mo>&minus;</mo><mtext>age</mtext><mo lspace="0" rspace="0">/</mo><mn>3</mn></mrow></msup></math></div>
+          </li>
+          <li>
+            <b>Advisor strength.</b> In each area, a person's influence is averaged over the selected venues and square-rooted, then added up across the school's faculty. This way two active advisors beat one person with the same combined output.
+            <div class="eq"><math displaystyle="true" aria-label="strength in an area equals the sum over faculty of the square root of influence divided by the venues selected in that area"><msub><mtext>strength</mtext><mi>a</mi></msub><mo>=</mo><munder><mo>&sum;</mo><mtext>faculty</mtext></munder><msqrt><mfrac><msub><mtext>influence</mtext><mi>a</mi></msub><mtext>venues selected</mtext></mfrac></msqrt></math></div>
+          </li>
+          <li>
+            <b>Score.</b> The final score combines the <math><mi>N</mi></math> selected areas, then gets scaled so the top school in view is 100. A weak area lowers a school's score but doesn't wipe it out.
+            <div class="eq"><math displaystyle="true" aria-label="score equals 1 over N times the sum over areas of the square root of strength, all squared"><mtext>score</mtext><mo>=</mo><msup><mrow><mo>(</mo><mfrac><mn>1</mn><mi>N</mi></mfrac><munder><mo>&sum;</mo><mi>a</mi></munder><msqrt><msub><mtext>strength</mtext><mi>a</mi></msub></msqrt><mo>)</mo></mrow><mn>2</mn></msup></math></div>
+          </li>
+        </ol>
+        The weights are a judgment call, not an established standard. Citations can be inflated, faculty are still inferred, and the index doesn't know about funding, mentoring, placement or student life, so use it for a shortlist and talk to current students.
+      </dd>
+    </dl>
+  </section>
+
+  <!-- Area filters and ranking table -->
+  <div class="main">
+    <aside class="leftcol paper" aria-label="Areas">
+      <button class="areas-toggle" id="areas-toggle" type="button" aria-expanded="false" aria-controls="filter-panel">Areas <span id="areas-toggle-count"></span></button>
+      <div class="filter-panel" id="filter-panel">
+        <label class="all-areas">
+          <span>All Areas</span>
+          <span class="switch"><input type="checkbox" id="all-left" checked><span class="slider"></span></span>
+        </label>
+        <div id="areas"></div>
+      </div>
+    </aside>
+
+    <section class="rightcol paper" aria-label="Institution ranking">
+      <div class="table-wrap">
+        <div id="loading" class="loading">Loading the rankings&hellip;</div>
+        <table class="ranking" id="ranking">
+          <thead><tr>
+            <th class="rank-h" scope="col"><span class="sr-only">Rank</span></th>
+            <th class="inst-h" scope="col">Institution</th>
+            <th class="num-h" scope="col"><abbr id="count-head" title="Geometric mean of the institution's author credit across the selected areas.">Count</abbr></th>
+            <th class="num-h" scope="col"><abbr title="Faculty with at least one paper in the selected areas and years.">Faculty</abbr></th>
+          </tr></thead>
+          <tbody id="ranking-body"></tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer class="foot">
+    <span>Data from <a href="https://openalex.org" target="_blank" rel="noopener">OpenAlex</a> (CC0), downloaded <span id="generated"></span></span>
+    <span>Scoring method after <a href="https://csrankings.org" target="_blank" rel="noopener">CSRankings</a> by Emery Berger</span>
+    <span class="credit">Created by Amir Nilforoushan &middot; <a href="https://github.com/Amir-Nilf" target="_blank" rel="me noopener">GitHub</a></span>
+  </footer>
+</div>
+<script src="js/clouds.js?v=28"></script>
+<script src="js/app.js?v=28"></script>
+</body>
+</html>

@@ -1,0 +1,171 @@
+{
+  "ee": {
+    "title": "Electrical Engineering",
+    "categories": [
+      {
+        "code": "circ",
+        "name": "Circuits & Devices",
+        "areas": [
+          {"code": "ssc", "name": "Solid-state circuits", "venues": [
+            {"short": "JSSC", "name": "IEEE Journal of Solid-State Circuits", "issn": "0018-9200"},
+            {"short": "ISSCC", "name": "IEEE Int'l Solid-State Circuits Conference", "issn": "0193-6530"}
+          ]},
+          {"code": "devices", "name": "Electron devices", "venues": [
+            {"short": "T-ED", "name": "IEEE Transactions on Electron Devices", "issn": "0018-9383"},
+            {"short": "EDL", "name": "IEEE Electron Device Letters", "issn": "0741-3106"},
+            {"short": "IEDM", "name": "IEEE Int'l Electron Devices Meeting", "issn": "0163-1918"}
+          ]},
+          {"code": "eda", "name": "Design automation", "venues": [
+            {"short": "TCAD", "name": "IEEE Trans. on Computer-Aided Design of ICs & Systems", "issn": "0278-0070"},
+            {"short": "DAC", "name": "ACM/IEEE Design Automation Conference", "issn": "0738-100X"}
+          ]},
+          {"code": "photonics", "name": "Photonics & optics", "venues": [
+            {"short": "Optica", "name": "Optica", "issn": "2334-2536"},
+            {"short": "Nat. Photon.", "name": "Nature Photonics", "issn": "1749-4885", "magazine": true},
+            {"short": "JLT", "name": "Journal of Lightwave Technology", "issn": "0733-8724"}
+          ]}
+        ]
+      },
+      {
+        "code": "sig",
+        "name": "Signals & Information",
+        "areas": [
+          {"code": "sp", "name": "Signal processing", "venues": [
+            {"short": "TSP", "name": "IEEE Transactions on Signal Processing", "issn": "1053-587X"},
+            {"short": "JSTSP", "name": "IEEE Journal of Selected Topics in Signal Processing", "issn": "1932-4553"}
+          ]},
+          {"code": "comm", "name": "Communications", "venues": [
+            {"short": "JSAC", "name": "IEEE Journal on Selected Areas in Communications", "issn": "0733-8716"},
+            {"short": "TWC", "name": "IEEE Transactions on Wireless Communications", "issn": "1536-1276"},
+            {"short": "TCOM", "name": "IEEE Transactions on Communications", "issn": "0090-6778"}
+          ]},
+          {"code": "it", "name": "Information theory", "venues": [
+            {"short": "T-IT", "name": "IEEE Transactions on Information Theory", "issn": "0018-9448"}
+          ]},
+          {"code": "imaging", "name": "Image & video processing", "venues": [
+            {"short": "TIP", "name": "IEEE Transactions on Image Processing", "issn": "1057-7149"}
+          ]}
+        ]
+      },
+      {
+        "code": "sys",
+        "name": "Energy & Control",
+        "areas": [
+          {"code": "control", "name": "Control systems", "venues": [
+            {"short": "TAC", "name": "IEEE Transactions on Automatic Control", "issn": "0018-9286"},
+            {"short": "Automatica", "name": "Automatica", "issn": "0005-1098"},
+            {"short": "TCST", "name": "IEEE Transactions on Control Systems Technology", "issn": "1063-6536"}
+          ]},
+          {"code": "power", "name": "Power & energy systems", "venues": [
+            {"short": "TPWRS", "name": "IEEE Transactions on Power Systems", "issn": "0885-8950"},
+            {"short": "TSG", "name": "IEEE Transactions on Smart Grid", "issn": "1949-3053"}
+          ]},
+          {"code": "pe", "name": "Power electronics", "venues": [
+            {"short": "TPEL", "name": "IEEE Transactions on Power Electronics", "issn": "0885-8993"}
+          ]}
+        ]
+      },
+      {
+        "code": "inter",
+        "name": "Interdisciplinary Areas",
+        "areas": [
+          {"code": "em", "name": "Electromagnetics & microwaves", "venues": [
+            {"short": "TAP", "name": "IEEE Transactions on Antennas and Propagation", "issn": "0018-926X"},
+            {"short": "TMTT", "name": "IEEE Transactions on Microwave Theory and Techniques", "issn": "0018-9480"}
+          ]},
+          {"code": "bme", "name": "Biomedical engineering", "venues": [
+            {"short": "TBME", "name": "IEEE Transactions on Biomedical Engineering", "issn": "0018-9294"},
+            {"short": "TMI", "name": "IEEE Transactions on Medical Imaging", "issn": "0278-0062"}
+          ]}
+        ]
+      }
+    ]
+  },
+  "me": {
+    "title": "Mechanical Engineering",
+    "categories": [
+      {
+        "code": "thermo",
+        "name": "Thermal & Fluids",
+        "areas": [
+          {"code": "fluids", "name": "Fluid mechanics", "venues": [
+            {"short": "JFM", "name": "Journal of Fluid Mechanics", "issn": "0022-1120"},
+            {"short": "PR Fluids", "name": "Physical Review Fluids", "issn": "2469-990X"}
+          ]},
+          {"code": "heat", "name": "Heat & mass transfer", "venues": [
+            {"short": "IJHMT", "name": "Int'l Journal of Heat and Mass Transfer", "issn": "0017-9310"},
+            {"short": "ASME JHT", "name": "ASME Journal of Heat (and Mass) Transfer", "issn": "0022-1481"}
+          ]},
+          {"code": "combustion", "name": "Combustion", "venues": [
+            {"short": "C&F", "name": "Combustion and Flame", "issn": "0010-2180"},
+            {"short": "PROCI", "name": "Proceedings of the Combustion Institute", "issn": "1540-7489"}
+          ]}
+        ]
+      },
+      {
+        "code": "mech",
+        "name": "Mechanics & Materials",
+        "areas": [
+          {"code": "solids", "name": "Solid mechanics", "venues": [
+            {"short": "JMPS", "name": "Journal of the Mechanics and Physics of Solids", "issn": "0022-5096"},
+            {"short": "IJSS", "name": "Int'l Journal of Solids and Structures", "issn": "0020-7683"},
+            {"short": "JAM", "name": "ASME Journal of Applied Mechanics", "issn": "0021-8936"},
+            {"short": "EML", "name": "Extreme Mechanics Letters", "issn": "2352-4316"}
+          ]},
+          {"code": "compmech", "name": "Computational mechanics", "venues": [
+            {"short": "CMAME", "name": "Computer Methods in Applied Mechanics and Engineering", "issn": "0045-7825"},
+            {"short": "IJNME", "name": "Int'l Journal for Numerical Methods in Engineering", "issn": "0029-5981"}
+          ]}
+        ]
+      },
+      {
+        "code": "dsc",
+        "name": "Dynamics, Control & Robotics",
+        "areas": [
+          {"code": "dynamics", "name": "Dynamics & vibration", "venues": [
+            {"short": "JSV", "name": "Journal of Sound and Vibration", "issn": "0022-460X"},
+            {"short": "JVA", "name": "ASME Journal of Vibration and Acoustics", "issn": "1048-9002"}
+          ]},
+          {"code": "controls", "name": "Dynamic systems & mechatronics", "venues": [
+            {"short": "JDSMC", "name": "ASME J. Dynamic Systems, Measurement, and Control", "issn": "0022-0434"},
+            {"short": "T-Mech", "name": "IEEE/ASME Transactions on Mechatronics", "issn": "1083-4435"}
+          ]},
+          {"code": "robotics", "name": "Robotics", "venues": [
+            {"short": "T-RO", "name": "IEEE Transactions on Robotics", "issn": "1552-3098"},
+            {"short": "IJRR", "name": "Int'l Journal of Robotics Research", "issn": "0278-3649"},
+            {"short": "Sci. Robot.", "name": "Science Robotics", "issn": "2470-9476", "magazine": true}
+          ]}
+        ]
+      },
+      {
+        "code": "dm",
+        "name": "Design & Manufacturing",
+        "areas": [
+          {"code": "design", "name": "Design", "venues": [
+            {"short": "JMD", "name": "ASME Journal of Mechanical Design", "issn": "1050-0472"},
+            {"short": "CAD", "name": "Computer-Aided Design", "issn": "0010-4485"}
+          ]},
+          {"code": "mfg", "name": "Manufacturing", "venues": [
+            {"short": "JMSE", "name": "ASME J. Manufacturing Science and Engineering", "issn": "1087-1357"},
+            {"short": "IJMTM", "name": "Int'l Journal of Machine Tools and Manufacture", "issn": "0890-6955"},
+            {"short": "CIRP", "name": "CIRP Annals", "issn": "0007-8506"}
+          ]}
+        ]
+      },
+      {
+        "code": "inter",
+        "name": "Interdisciplinary Areas",
+        "areas": [
+          {"code": "biomech", "name": "Biomechanics", "venues": [
+            {"short": "J. Biomech.", "name": "Journal of Biomechanics", "issn": "0021-9290"},
+            {"short": "JBME", "name": "ASME Journal of Biomechanical Engineering", "issn": "0148-0731"}
+          ]},
+          {"code": "mems", "name": "MEMS & microfluidics", "venues": [
+            {"short": "JMEMS", "name": "Journal of Microelectromechanical Systems", "issn": "1057-7157"},
+            {"short": "Lab Chip", "name": "Lab on a Chip", "issn": "1473-0197"}
+          ]}
+        ]
+      }
+    ]
+  }
+}
